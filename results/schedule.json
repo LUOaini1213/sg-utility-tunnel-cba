@@ -1,0 +1,140 @@
+{
+  "base": {
+    "finish": 73.0,
+    "m1": 53.0,
+    "m2": 73.0,
+    "critical_path": [
+      "A",
+      "B",
+      "C",
+      "E",
+      "L",
+      "N",
+      "O",
+      "M2"
+    ],
+    "float": {
+      "A": 0.0,
+      "B": 0.0,
+      "C": 0.0,
+      "D": 3.0,
+      "E": 0.0,
+      "F": 28.0,
+      "G": 20.0,
+      "H": 20.0,
+      "M1": 20.0,
+      "J": 9.0,
+      "K": 18.0,
+      "L": 0.0,
+      "N": 0.0,
+      "O": 0.0,
+      "P": 8.0,
+      "M2": 0.0
+    }
+  },
+  "delays": [
+    {
+      "label": "Ph2 site formation 12 months late",
+      "activity": "J",
+      "delay_months": 12,
+      "float_before": 9.0,
+      "m1_finish": 53.0,
+      "m2_finish": 76.0,
+      "m1_slip": 0.0,
+      "m2_slip": 3.0,
+      "critical_after": [
+        "A",
+        "D",
+        "J",
+        "L",
+        "N",
+        "O",
+        "M2"
+      ]
+    },
+    {
+      "label": "Ph2 site formation 24 months late",
+      "activity": "J",
+      "delay_months": 24,
+      "float_before": 9.0,
+      "m1_finish": 53.0,
+      "m2_finish": 88.0,
+      "m1_slip": 0.0,
+      "m2_slip": 15.0,
+      "critical_after": [
+        "A",
+        "D",
+        "J",
+        "L",
+        "N",
+        "O",
+        "M2"
+      ]
+    },
+    {
+      "label": "Ph1 approvals 6 months late",
+      "activity": "C",
+      "delay_months": 6,
+      "float_before": 0.0,
+      "m1_finish": 59.0,
+      "m2_finish": 79.0,
+      "m1_slip": 6.0,
+      "m2_slip": 6.0,
+      "critical_after": [
+        "A",
+        "B",
+        "C",
+        "E",
+        "L",
+        "N",
+        "O",
+        "M2"
+      ]
+    },
+    {
+      "label": "Ph2 road pavement 6 months late",
+      "activity": "P",
+      "delay_months": 6,
+      "float_before": 8.0,
+      "m1_finish": 53.0,
+      "m2_finish": 73.0,
+      "m1_slip": 0.0,
+      "m2_slip": 0.0,
+      "critical_after": [
+        "A",
+        "B",
+        "C",
+        "E",
+        "L",
+        "N",
+        "O",
+        "M2"
+      ]
+    }
+  ],
+  "monte_carlo": {
+    "target": "M2",
+    "draws": 5000,
+    "p50": 79.048,
+    "p80": 83.1178,
+    "p90": 85.2109,
+    "criticality": {
+      "A": 1.0,
+      "B": 0.894,
+      "C": 0.894,
+      "D": 0.106,
+      "E": 0.9914,
+      "F": 0.0,
+      "G": 0.0,
+      "H": 0.0,
+      "M1": 0.0,
+      "J": 0.0086,
+      "K": 0.0,
+      "L": 1.0,
+      "N": 1.0,
+      "O": 1.0,
+      "P": 0.0,
+      "M2": 1.0
+    }
+  }
+}

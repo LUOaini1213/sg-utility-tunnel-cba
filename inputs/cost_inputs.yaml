@@ -1,0 +1,120 @@
+# Screening-level inputs, per km of district road corridor, SGD million (real, 2026 price basis).
+# kind: source     -> value taken from a cited public source (id in docs/sources.md); not swept.
+# kind: assumption -> scenario assumption; MUST have low < base < high and is swept in sensitivity.
+# 'informed_by' points to a source that shaped an assumption's range without fixing it.
+
+params:
+  mb_cost_per_km:
+    kind: source
+    source: S1
+    value: 72.67
+    unit: SGD M per km (nominal, price year not stated)
+    note: "Marina Bay CST phase 1 (1.4 km, ~S$81M) + phase 2 (1.6 km, ~S$137M) = S$218M / 3.0 km"
+  escalation:
+    kind: assumption
+    low: 1.0
+    base: 1.3
+    high: 1.7
+    unit: factor
+    note: "Converts S1 (2000s nominal) to 2026 prices; no construction cost index applied (not verified)"
+  scale_factor:
+    kind: assumption
+    low: 0.5
+    base: 0.8
+    high: 1.2
+    unit: factor
+    note: "New-district CST size/complexity relative to the Marina Bay CST"
+  db_capex_ratio:
+    kind: assumption
+    informed_by: S3
+    low: 0.2
+    base: 0.35
+    high: 0.6
+    unit: ratio
+    note: "Direct-buried civil capex as a share of CST capex. S3 reports tunnels ~50-80% dearer than open cut for shallow galleries (ratio 0.56-0.67); a large walk-in CST is assumed relatively dearer"
+  events_per_km_yr:
+    kind: assumption
+    low: 1.0
+    base: 3.0
+    high: 8.0
+    unit: road openings per km per year (direct-buried)
+  event_direct_cost:
+    kind: assumption
+    low: 0.05
+    base: 0.12
+    high: 0.3
+    unit: SGD M per opening (excavation + reinstatement)
+  event_social_cost:
+    kind: assumption
+    low: 0.0
+    base: 0.2
+    high: 0.8
+    unit: SGD M per opening (traffic delay, access and business disruption)
+  cst_event_reduction:
+    kind: assumption
+    informed_by: S3
+    low: 0.6
+    base: 0.75
+    high: 0.9
+    unit: share of openings avoided by the CST
+    note: "S3 cites 70-80% fewer maintenance interventions, method not transparent; range widened"
+  cst_om_frac:
+    kind: assumption
+    low: 0.003
+    base: 0.006
+    high: 0.015
+    unit: share of CST capex per year (ventilation, monitoring, security, inspection)
+  replacement_cycle_yr:
+    kind: assumption
+    low: 25
+    base: 40
+    high: 60
+    unit: years between utility renewals
+  db_repl_civil_frac:
+    kind: assumption
+    low: 0.4
+    base: 0.8
+    high: 1.2
+    unit: re-trenching cost per renewal as share of direct-buried capex
+  repl_disruption_events:
+    kind: assumption
+    low: 3
+    base: 10
+    high: 25
+    unit: opening-equivalents of social cost per renewal (direct-buried)
+  cst_repl_civil_frac:
+    kind: assumption
+    low: 0.05
+    base: 0.15
+    high: 0.3
+    unit: in-tunnel renewal civil cost as share of direct-buried capex
+  cst_life_yr:
+    kind: assumption
+    low: 75
+    base: 100
+    high: 120
+    unit: years (straight-line residual value at horizon)
+  discount_rate:
+    kind: assumption
+    informed_by: S2
+    low: 0.015
+    base: null   # null = HM Treasury Green Book 2026 declining schedule (S2)
+    high: 0.07
+    unit: real, per year (flat rate used only for the low/high sweep)
+
+horizons: [50, 100]
+
+# Load scenarios declared before any results were computed: they change two inputs only.
+scenarios:
+  high_load:
+    label: "High-load district (CBD-like)"
+    events_per_km_yr: 6.0
+    event_social_cost: 0.5
+  moderate_load:
+    label: "Moderate-load district (estate-like)"
+    events_per_km_yr: 1.5
+    event_social_cost: 0.08
+
+monte_carlo:
+  draws: 20000
+  seed: 20261111

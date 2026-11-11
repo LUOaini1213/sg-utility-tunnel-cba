@@ -1,0 +1,32 @@
+# Illustrative two-phase district programme (durations in months: low, base, high).
+# All durations are assumptions for a hypothetical district, not from any real project.
+# Interface rule encoded: road pavement above a CST segment follows its civil works, so the
+# road is not reopened later (cf. the one-year no-opening rule on newly resurfaced roads, S4).
+activities:
+  A:  {name: "Feasibility and masterplan integration", dur: [4, 6, 9], after: []}
+  B:  {name: "CST Ph1 alignment and design", dur: [7, 9, 13], after: [A]}
+  C:  {name: "CST Ph1 approvals and protection zone", dur: [4, 6, 10], after: [B]}
+  D:  {name: "Site formation Ph1", dur: [9, 12, 18], after: [A]}
+  E:  {name: "CST Ph1 civil works (cut-and-cover)", dur: [14, 18, 26], after: [C, D]}
+  F:  {name: "Road Ph1 pavement over CST", dur: [4, 6, 9], after: [E]}
+  G:  {name: "CST Ph1 M&E fit-out (ventilation, monitoring)", dur: [6, 8, 12], after: [E]}
+  H:  {name: "Utility installation in CST Ph1", dur: [4, 6, 9], after: [G]}
+  M1: {name: "Ph1 services ready for first occupation", dur: [0, 0, 0], after: [F, H]}
+  J:  {name: "Site formation Ph2", dur: [9, 12, 20], after: [D]}
+  K:  {name: "CST Ph2 design", dur: [4, 6, 9], after: [B]}
+  L:  {name: "CST Ph2 civil works", dur: [16, 20, 30], after: [J, K, E]}
+  N:  {name: "CST Ph2 M&E fit-out", dur: [6, 8, 12], after: [L]}
+  O:  {name: "Utility installation in CST Ph2", dur: [4, 6, 9], after: [N]}
+  P:  {name: "Road Ph2 pavement over CST", dur: [4, 6, 9], after: [L]}
+  M2: {name: "Ph2 services ready", dur: [0, 0, 0], after: [O, P]}
+
+delay_scenarios:
+  - {activity: J, months: 12, label: "Ph2 site formation 12 months late"}
+  - {activity: J, months: 24, label: "Ph2 site formation 24 months late"}
+  - {activity: C, months: 6, label: "Ph1 approvals 6 months late"}
+  - {activity: P, months: 6, label: "Ph2 road pavement 6 months late"}
+
+monte_carlo:
+  draws: 5000
+  seed: 20261118
+  target: M2

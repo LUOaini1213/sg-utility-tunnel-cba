@@ -1,0 +1,464 @@
+{
+  "base": {
+    "h50": {
+      "cst_capex": 75.5768,
+      "db_capex": 26.4519,
+      "pv_db": 58.8883,
+      "pv_cst": 85.3988,
+      "npv_cst": -26.5105,
+      "pv_events_avoided": 18.7365,
+      "pv_cst_om": 11.8004,
+      "pv_replacement_saving": 6.1774,
+      "pv_residual": 9.5009
+    },
+    "h100": {
+      "cst_capex": 75.5768,
+      "db_capex": 26.4519,
+      "pv_db": 68.6144,
+      "pv_cst": 100.3768,
+      "npv_cst": -31.7624,
+      "pv_events_avoided": 23.9234,
+      "pv_cst_om": 15.0671,
+      "pv_replacement_saving": 8.5063,
+      "pv_residual": 0.0
+    }
+  },
+  "financial_only": {
+    "h50": {
+      "cst_capex": 75.5768,
+      "db_capex": 26.4519,
+      "pv_db": 42.6308,
+      "pv_cst": 81.4954,
+      "npv_cst": -38.8645,
+      "pv_events_avoided": 7.0262,
+      "pv_cst_om": 11.8004,
+      "pv_replacement_saving": 5.5337,
+      "pv_residual": 9.5009
+    },
+    "h100": {
+      "cst_capex": 75.5768,
+      "db_capex": 26.4519,
+      "pv_db": 47.7919,
+      "pv_cst": 95.3928,
+      "npv_cst": -47.6008,
+      "pv_events_avoided": 8.9713,
+      "pv_cst_om": 15.0671,
+      "pv_replacement_saving": 7.6199,
+      "pv_residual": 0.0
+    }
+  },
+  "scenarios": {
+    "high_load": {
+      "label": "High-load district (CBD-like)",
+      "h50": 28.3226,
+      "h100": 38.3468
+    },
+    "moderate_load": {
+      "label": "Moderate-load district (estate-like)",
+      "h50": -39.7781,
+      "h100": -48.7415
+    }
+  },
+  "breakeven": {
+    "h50": {
+      "events_per_km_yr": 7.2447,
+      "event_social_cost": 0.6292,
+      "db_capex_ratio": 0.6401,
+      "scale_factor": 0.3378,
+      "discount_rate": 0.0086,
+      "events_per_km_yr_financial_only": 19.5941
+    },
+    "h100": {
+      "events_per_km_yr": 6.983,
+      "event_social_cost": 0.6011,
+      "db_capex_ratio": 0.6763,
+      "scale_factor": 0.3508,
+      "discount_rate": 0.0052,
+      "events_per_km_yr_financial_only": 18.9178
+    }
+  },
+  "tornado": {
+    "h50": [
+      {
+        "param": "event_social_cost",
+        "low_value": 0.0,
+        "high_value": 0.8,
+        "npv_at_low": -38.8645,
+        "npv_at_high": 10.5516,
+        "swing": 49.4161,
+        "flips_decision": true
+      },
+      {
+        "param": "events_per_km_yr",
+        "low_value": 1.0,
+        "high_value": 8.0,
+        "npv_at_low": -39.0015,
+        "npv_at_high": 4.7171,
+        "swing": 43.7186,
+        "flips_decision": true
+      },
+      {
+        "param": "scale_factor",
+        "low_value": 0.5,
+        "high_value": 1.2,
+        "npv_at_low": -9.3015,
+        "npv_at_high": -49.4559,
+        "swing": 40.1544,
+        "flips_decision": false
+      },
+      {
+        "param": "db_capex_ratio",
+        "low_value": 0.2,
+        "high_value": 0.6,
+        "npv_at_low": -40.2186,
+        "npv_at_high": -3.6637,
+        "swing": 36.5549,
+        "flips_decision": false
+      },
+      {
+        "param": "discount_rate",
+        "low_value": 0.015,
+        "high_value": 0.07,
+        "npv_at_low": -11.2657,
+        "npv_at_high": -42.8819,
+        "swing": 31.6162,
+        "flips_decision": false
+      },
+      {
+        "param": "escalation",
+        "low_value": 1.0,
+        "high_value": 1.7,
+        "npv_at_low": -15.9203,
+        "npv_at_high": -40.6307,
+        "swing": 24.7104,
+        "flips_decision": false
+      },
+      {
+        "param": "cst_om_frac",
+        "low_value": 0.003,
+        "high_value": 0.015,
+        "npv_at_low": -20.6103,
+        "npv_at_high": -44.2111,
+        "swing": 23.6008,
+        "flips_decision": false
+      },
+      {
+        "param": "event_direct_cost",
+        "low_value": 0.05,
+        "high_value": 0.3,
+        "npv_at_low": -30.6091,
+        "npv_at_high": -15.9712,
+        "swing": 14.6379,
+        "flips_decision": false
+      },
+      {
+        "param": "replacement_cycle_yr",
+        "low_value": 25,
+        "high_value": 60,
+        "npv_at_low": -18.6951,
+        "npv_at_high": -32.6879,
+        "swing": 13.9928,
+        "flips_decision": false
+      },
+      {
+        "param": "cst_event_reduction",
+        "low_value": 0.6,
+        "high_value": 0.9,
+        "npv_at_low": -30.2578,
+        "npv_at_high": -22.7632,
+        "swing": 7.4946,
+        "flips_decision": false
+      },
+      {
+        "param": "db_repl_civil_frac",
+        "low_value": 0.4,
+        "high_value": 1.2,
+        "npv_at_low": -29.9159,
+        "npv_at_high": -23.1052,
+        "swing": 6.8107,
+        "flips_decision": false
+      },
+      {
+        "param": "cst_life_yr",
+        "low_value": 75,
+        "high_value": 120,
+        "npv_at_low": -29.6775,
+        "npv_at_high": -24.927,
+        "swing": 4.7504,
+        "flips_decision": false
+      },
+      {
+        "param": "cst_repl_civil_frac",
+        "low_value": 0.05,
+        "high_value": 0.3,
+        "npv_at_low": -25.6592,
+        "npv_at_high": -27.7875,
+        "swing": 2.1283,
+        "flips_decision": false
+      },
+      {
+        "param": "repl_disruption_events",
+        "low_value": 3,
+        "high_value": 25,
+        "npv_at_low": -26.9611,
+        "npv_at_high": -25.545,
+        "swing": 1.4161,
+        "flips_decision": false
+      }
+    ],
+    "h100": [
+      {
+        "param": "event_social_cost",
+        "low_value": 0.0,
+        "high_value": 0.8,
+        "npv_at_low": -47.6008,
+        "npv_at_high": 15.753,
+        "swing": 63.3538,
+        "flips_decision": true
+      },
+      {
+        "param": "events_per_km_yr",
+        "low_value": 1.0,
+        "high_value": 8.0,
+        "npv_at_low": -47.7113,
+        "npv_at_high": 8.1099,
+        "swing": 55.8212,
+        "flips_decision": true
+      },
+      {
+        "param": "scale_factor",
+        "low_value": 0.5,
+        "high_value": 1.2,
+        "npv_at_low": -10.5478,
+        "npv_at_high": -60.0484,
+        "swing": 49.5006,
+        "flips_decision": false
+      },
+      {
+        "param": "db_capex_ratio",
+        "low_value": 0.2,
+        "high_value": 0.6,
+        "npv_at_low": -46.3646,
+        "npv_at_high": -7.4254,
+        "swing": 38.9392,
+        "flips_decision": false
+      },
+      {
+        "param": "escalation",
+        "low_value": 1.0,
+        "high_value": 1.7,
+        "npv_at_low": -18.7073,
+        "npv_at_high": -49.1692,
+        "swing": 30.4619,
+        "flips_decision": false
+      },
+      {
+        "param": "cst_om_frac",
+        "low_value": 0.003,
+        "high_value": 0.015,
+        "npv_at_low": -24.2288,
+        "npv_at_high": -54.363,
+        "swing": 30.1342,
+        "flips_decision": false
+      },
+      {
+        "param": "discount_rate",
+        "low_value": 0.015,
+        "high_value": 0.07,
+        "npv_at_low": -18.9514,
+        "npv_at_high": -43.9542,
+        "swing": 25.0029,
+        "flips_decision": false
+      },
+      {
+        "param": "event_direct_cost",
+        "low_value": 0.05,
+        "high_value": 0.3,
+        "npv_at_low": -36.9956,
+        "npv_at_high": -18.3055,
+        "swing": 18.6901,
+        "flips_decision": false
+      },
+      {
+        "param": "replacement_cycle_yr",
+        "low_value": 25,
+        "high_value": 60,
+        "npv_at_low": -22.1805,
+        "npv_at_high": -36.4988,
+        "swing": 14.3183,
+        "flips_decision": false
+      },
+      {
+        "param": "cst_event_reduction",
+        "low_value": 0.6,
+        "high_value": 0.9,
+        "npv_at_low": -36.547,
+        "npv_at_high": -26.9777,
+        "swing": 9.5693,
+        "flips_decision": false
+      },
+      {
+        "param": "db_repl_civil_frac",
+        "low_value": 0.4,
+        "high_value": 1.2,
+        "npv_at_low": -36.4516,
+        "npv_at_high": -27.0732,
+        "swing": 9.3784,
+        "flips_decision": false
+      },
+      {
+        "param": "cst_repl_civil_frac",
+        "low_value": 0.05,
+        "high_value": 0.3,
+        "npv_at_low": -30.5901,
+        "npv_at_high": -33.5208,
+        "swing": 2.9307,
+        "flips_decision": false
+      },
+      {
+        "param": "repl_disruption_events",
+        "low_value": 3,
+        "high_value": 25,
+        "npv_at_low": -32.3828,
+        "npv_at_high": -30.4328,
+        "swing": 1.95,
+        "flips_decision": false
+      },
+      {
+        "param": "cst_life_yr",
+        "low_value": 75,
+        "high_value": 120,
+        "npv_at_low": -31.7624,
+        "npv_at_high": -30.783,
+        "swing": 0.9794,
+        "flips_decision": false
+      }
+    ]
+  },
+  "monte_carlo": {
+    "h50": {
+      "draws": 20000,
+      "p_cst_pays": 0.2868,
+      "npv_p10": -42.4326,
+      "npv_p50": -14.1793,
+      "npv_p90": 21.7205,
+      "npv_mean": -11.979
+    },
+    "h50_financial_only": {
+      "draws": 20000,
+      "p_cst_pays": 0.0029,
+      "npv_p10": -60.2346,
+      "npv_p50": -38.2816,
+      "npv_p90": -19.6148,
+      "npv_mean": -39.2168
+    },
+    "h100": {
+      "draws": 20000,
+      "p_cst_pays": 0.3129,
+      "npv_p10": -49.8253,
+      "npv_p50": -15.4189,
+      "npv_p90": 30.4349,
+      "npv_mean": -12.124
+    },
+    "h100_financial_only": {
+      "draws": 20000,
+      "p_cst_pays": 0.0033,
+      "npv_p10": -72.3202,
+      "npv_p50": -46.2317,
+      "npv_p90": -23.6799,
+      "npv_mean": -47.2224
+    }
+  },
+  "inputs": {
+    "mb_cost_per_km": 72.67,
+    "escalation": 1.3,
+    "scale_factor": 0.8,
+    "db_capex_ratio": 0.35,
+    "events_per_km_yr": 3.0,
+    "event_direct_cost": 0.12,
+    "event_social_cost": 0.2,
+    "cst_event_reduction": 0.75,
+    "cst_om_frac": 0.006,
+    "replacement_cycle_yr": 40,
+    "db_repl_civil_frac": 0.8,
+    "repl_disruption_events": 10,
+    "cst_repl_civil_frac": 0.15,
+    "cst_life_yr": 100,
+    "discount_rate": null
+  },
+  "breakeven_curve": {
+    "h50": [
+      {
+        "event_social_cost": 0.0,
+        "events_per_km_yr": 19.5941
+      },
+      {
+        "event_social_cost": 0.1,
+        "events_per_km_yr": 10.6127
+      },
+      {
+        "event_social_cost": 0.2,
+        "events_per_km_yr": 7.2447
+      },
+      {
+        "event_social_cost": 0.4,
+        "events_per_km_yr": 4.3949
+      },
+      {
+        "event_social_cost": 0.8,
+        "events_per_km_yr": 2.4124
+      }
+    ],
+    "h100": [
+      {
+        "event_social_cost": 0.0,
+        "events_per_km_yr": 18.9178
+      },
+      {
+        "event_social_cost": 0.1,
+        "events_per_km_yr": 10.238
+      },
+      {
+        "event_social_cost": 0.2,
+        "events_per_km_yr": 6.983
+      },
+      {
+        "event_social_cost": 0.4,
+        "events_per_km_yr": 4.2288
+      },
+      {
+        "event_social_cost": 0.8,
+        "events_per_km_yr": 2.3129
+      }
+    ]
+  },
+  "horizons": [
+    50,
+    100
+  ],
+  "discount_schedule": {
+    "edition": 2026,
+    "bands": [
+      {
+        "from_year": 1,
+        "rate": 0.03
+      },
+      {
+        "from_year": 31,
+        "rate": 0.025
+      },
+      {
+        "from_year": 76,
+        "rate": 0.0225
+      }
+    ]
+  },
+  "flip_params_h100": [
+    "event_social_cost",
+    "events_per_km_yr"
+  ],
+  "flip_params_h50": [
+    "event_social_cost",
+    "events_per_km_yr"
+  ]
+}

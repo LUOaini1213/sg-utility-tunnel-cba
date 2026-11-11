@@ -1,0 +1,100 @@
+{
+  "n_mutants": 30,
+  "tests_collected": 34,
+  "first_run": {
+    "total": 30,
+    "killed": 13,
+    "survivors": [
+      {
+        "id": 4,
+        "file": "cstcba/costmodel.py",
+        "mutation": "annuity = df.sum()"
+      },
+      {
+        "id": 5,
+        "file": "cstcba/costmodel.py",
+        "mutation": "db_capex = cst_capex * (1 - p[\"db_capex_ratio\"])"
+      },
+      {
+        "id": 7,
+        "file": "cstcba/costmodel.py",
+        "mutation": "p[\"cst_event_reduction\"]"
+      },
+      {
+        "id": 8,
+        "file": "cstcba/costmodel.py",
+        "mutation": "cst_om_yr = db_capex * p[\"cst_om_frac\"]"
+      },
+      {
+        "id": 10,
+        "file": "cstcba/costmodel.py",
+        "mutation": "+ residual * df[horizon]"
+      },
+      {
+        "id": 11,
+        "file": "cstcba/costmodel.py",
+        "mutation": "1.0 - horizon * 0.5 /"
+      },
+      {
+        "id": 13,
+        "file": "cstcba/costmodel.py",
+        "mutation": "p[\"repl_disruption_events\"] * p[\"event_direct_cost\"]"
+      },
+      {
+        "id": 15,
+        "file": "cstcba/costmodel.py",
+        "mutation": "return lo"
+      },
+      {
+        "id": 16,
+        "file": "cstcba/sensitivity.py",
+        "mutation": "r[\"swing\"], reverse=False"
+      },
+      {
+        "id": 17,
+        "file": "cstcba/sensitivity.py",
+        "mutation": "and np.sign(out[\"high\"])"
+      },
+      {
+        "id": 18,
+        "file": "cstcba/sensitivity.py",
+        "mutation": "(v < 0).mean()"
+      },
+      {
+        "id": 19,
+        "file": "cstcba/sensitivity.py",
+        "mutation": "spec[\"low\"], spec[\"low\"], spec[\"high\"]"
+      },
+      {
+        "id": 22,
+        "file": "cstcba/schedule.py",
+        "mutation": "abs(tf[a]) <= 1.0"
+      },
+      {
+        "id": 23,
+        "file": "cstcba/schedule.py",
+        "mutation": "d[sc[\"activity\"]] = sc[\"months\"]"
+      },
+      {
+        "id": 28,
+        "file": "scripts/build_readme.py",
+        "mutation": "if False:"
+      },
+      {
+        "id": 29,
+        "file": "cstcba/run.py",
+        "mutation": "for r in out[\"tornado\"][\"h100\"] if not r[\"flips_decision\"]"
+      },
+      {
+        "id": 30,
+        "file": "cstcba/run.py",
+        "mutation": "p.update({})"
+      }
+    ]
+  },
+  "final": {
+    "total": 30,
+    "killed": 30,
+    "survivors": []
+  }
+}

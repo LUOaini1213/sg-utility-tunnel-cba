@@ -1,0 +1,27 @@
+# Pairwise interface risks for systems sharing one CST cross-section.
+# Severity 1 (manageable by standard detailing) .. 3 (drives layout or compartmentation).
+# Author's screening judgement from general engineering practice; not sourced, not agency guidance.
+systems:
+  water: "Potable / NEWater mains"
+  power: "Power cables (HV/LV)"
+  telecom: "Telecom / fibre"
+  pwcs: "Pneumatic waste conveyance pipes"
+  dcs: "District cooling chilled-water pipes"
+
+pairs:
+  - [water, power, 3, "Burst or leak floods cable trays; needs segregation, raised cable level, sumps and leak detection"]
+  - [water, telecom, 2, "Leak damages fibre joints and cabinets; place telecom above water, sealed closures"]
+  - [water, pwcs, 1, "Shared drainage and support zones; routine segregation"]
+  - [water, dcs, 2, "Two large pressurised pipe systems compete for floor space, valves and pipe-handling route"]
+  - [power, telecom, 2, "Electromagnetic interference and fault heat; separation distance or shielding"]
+  - [power, pwcs, 1, "Limited: support spacing and access clearance"]
+  - [power, dcs, 3, "Cable heat raises tunnel air temperature while chilled pipes need insulation; condensation drips on cables; ventilation sized for both"]
+  - [telecom, pwcs, 1, "Limited: vibration from waste transport at bends"]
+  - [telecom, dcs, 2, "Condensation on chilled pipes above fibre; drip trays or vertical ordering"]
+  - [pwcs, dcs, 2, "Both need large-radius bends and straight runs; fixes tunnel width at junctions"]
+
+cross_cutting:
+  - "Single owner/operator vs several utility agencies: access rights, permits and cost sharing for O&M"
+  - "Common-mode hazards: fire, flooding at portals and shafts, single point of failure at crossings"
+  - "Future capacity: spare space reserved now vs systems not yet known"
+  - "Branch connections to plots: each lot connection is a potential road opening if not provided at build time"

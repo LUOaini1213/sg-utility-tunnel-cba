@@ -1,0 +1,17 @@
+{
+  "n_systems": 5,
+  "n_pairs": 10,
+  "n_severity_3": 2,
+  "severity_3_pairs": [
+    "water-power",
+    "power-dcs"
+  ],
+  "interface_load": {
+    "water": 8,
+    "power": 9,
+    "telecom": 7,
+    "pwcs": 5,
+    "dcs": 9
+  },
+  "most_coupled": "power"
+}
