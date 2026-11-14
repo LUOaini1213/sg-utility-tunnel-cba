@@ -1,0 +1,1719 @@
+{
+  "rules": {
+    "n_total": 17,
+    "n_sourced": 14,
+    "n_assumption": 3,
+    "n_sources": 7,
+    "table": [
+      {
+        "id": "LTA-DEPTH-CARRIAGEWAY",
+        "agency": "LTA",
+        "kind": "cover",
+        "status": "sourced",
+        "value_m": 1.0
+      },
+      {
+        "id": "LTA-DEPTH-SIDETABLE",
+        "agency": "LTA",
+        "kind": "cover",
+        "status": "sourced",
+        "value_m": 1.2
+      },
+      {
+        "id": "LTA-NO-CHAMBER-CARRIAGEWAY",
+        "agency": "LTA",
+        "kind": "chamber_ban",
+        "status": "sourced",
+        "value_m": null
+      },
+      {
+        "id": "LTA-NO-STACKING",
+        "agency": "LTA",
+        "kind": "no_stacking",
+        "status": "sourced",
+        "value_m": null
+      },
+      {
+        "id": "PUB-SEWER-PARALLEL",
+        "agency": "PUB",
+        "kind": "parallel",
+        "status": "sourced",
+        "value_m": 1.0
+      },
+      {
+        "id": "PUB-SEWER-CROSSING",
+        "agency": "PUB",
+        "kind": "crossing",
+        "status": "sourced",
+        "value_m": 1.0
+      },
+      {
+        "id": "PUB-SEWER-DEPTH",
+        "agency": "PUB",
+        "kind": "invert_depth",
+        "status": "sourced",
+        "value_m": 1.5
+      },
+      {
+        "id": "PUB-WATER-COVER",
+        "agency": "PUB",
+        "kind": "cover_type",
+        "status": "sourced",
+        "value_m": 1.0
+      },
+      {
+        "id": "PUB-WATER-CROSSING",
+        "agency": "PUB",
+        "kind": "crossing",
+        "status": "sourced",
+        "value_m": 1.0
+      },
+      {
+        "id": "PUB-WATER-PARALLEL",
+        "agency": "PUB",
+        "kind": "parallel",
+        "status": "assumption",
+        "value_m": 1.0
+      },
+      {
+        "id": "PUB-DRAIN-OFFSET",
+        "agency": "PUB",
+        "kind": "drain_offset",
+        "status": "sourced",
+        "value_m": 0.3
+      },
+      {
+        "id": "PUB-DRAIN-UNDERCROSS",
+        "agency": "PUB",
+        "kind": "crossing",
+        "status": "sourced",
+        "value_m": 1.0
+      },
+      {
+        "id": "SP-GAS-CLEARANCE",
+        "agency": "SP PowerGrid / PowerGas",
+        "kind": "parallel",
+        "status": "sourced",
+        "value_m": 0.3
+      },
+      {
+        "id": "SP-GAS-CROSSING",
+        "agency": "SP PowerGrid / PowerGas",
+        "kind": "crossing",
+        "status": "sourced",
+        "value_m": 0.3
+      },
+      {
+        "id": "IMDA-TELECOM-POWER",
+        "agency": "IMDA",
+        "kind": "parallel",
+        "status": "sourced",
+        "value_m": 0.3
+      },
+      {
+        "id": "DEFAULT-CLEARANCE",
+        "agency": "none",
+        "kind": "parallel",
+        "status": "assumption",
+        "value_m": 0.3
+      },
+      {
+        "id": "DEFAULT-CROSSING",
+        "agency": "none",
+        "kind": "crossing",
+        "status": "assumption",
+        "value_m": 0.3
+      }
+    ]
+  },
+  "geometry": {
+    "drain_width_m": 1.0,
+    "drain_invert_depth_m": 1.0,
+    "trench_working_width_m": 0.6,
+    "bedding_m": 0.15
+  },
+  "costs": {
+    "sidetable_rate_per_m3": 150.0,
+    "carriageway_rate_per_m3": 400.0,
+    "diversion_factor": 1.5
+  },
+  "examples": {
+    "local": {
+      "label": "Local access road",
+      "reserve_width_m": 15.4,
+      "carriageway_m": 7.4,
+      "verge_m": 4.0,
+      "n_utilities": 5,
+      "min_width": {
+        "verge_m": 2.93,
+        "reserve_width_m": 13.26,
+        "spare_reserve_m": 2.14,
+        "fits": true,
+        "items": [
+          {
+            "id": "telecom",
+            "x_m": 1.45,
+            "cover_m": 1.2,
+            "zone": "left"
+          },
+          {
+            "id": "water",
+            "x_m": 2.765,
+            "cover_m": 1.2,
+            "zone": "left"
+          },
+          {
+            "id": "power_hv",
+            "x_m": 4.23,
+            "cover_m": 1.0,
+            "zone": "carriageway"
+          },
+          {
+            "id": "gas",
+            "x_m": 10.48,
+            "cover_m": 1.2,
+            "zone": "right"
+          },
+          {
+            "id": "sewer",
+            "x_m": 11.76,
+            "cover_m": 1.2,
+            "zone": "right"
+          }
+        ],
+        "tight": [
+          {
+            "rule": "PUB-WATER-PARALLEL",
+            "items": [
+              "telecom",
+              "water"
+            ],
+            "clearance_m": 1.0
+          },
+          {
+            "rule": "PUB-WATER-PARALLEL",
+            "items": [
+              "water",
+              "power_hv"
+            ],
+            "clearance_m": 1.0
+          },
+          {
+            "rule": "PUB-SEWER-PARALLEL",
+            "items": [
+              "gas",
+              "sewer"
+            ],
+            "clearance_m": 1.0
+          },
+          {
+            "rule": "PUB-DRAIN-OFFSET",
+            "items": [
+              "telecom",
+              "drain"
+            ],
+            "clearance_m": 0.3
+          },
+          {
+            "rule": "KERB-LINE",
+            "items": [
+              "water",
+              "kerb"
+            ],
+            "clearance_m": 0.0
+          },
+          {
+            "rule": "PUB-DRAIN-OFFSET",
+            "items": [
+              "sewer",
+              "drain"
+            ],
+            "clearance_m": 0.3
+          }
+        ]
+      },
+      "relaxation": [
+        {
+          "rule": "LTA-NO-CHAMBER-CARRIAGEWAY",
+          "status": "sourced",
+          "reserve_width_m": 9.4,
+          "saving_m": 3.86
+        },
+        {
+          "rule": "PUB-DRAIN-OFFSET",
+          "status": "sourced",
+          "reserve_width_m": 12.66,
+          "saving_m": 0.6
+        },
+        {
+          "rule": "PUB-WATER-PARALLEL",
+          "status": "assumption",
+          "reserve_width_m": 12.78,
+          "saving_m": 0.48
+        },
+        {
+          "rule": "PUB-SEWER-PARALLEL",
+          "status": "sourced",
+          "reserve_width_m": 12.92,
+          "saving_m": 0.34
+        },
+        {
+          "rule": "DEFAULT-CLEARANCE",
+          "status": "assumption",
+          "reserve_width_m": 13.26,
+          "saving_m": 0.0
+        },
+        {
+          "rule": "IMDA-TELECOM-POWER",
+          "status": "sourced",
+          "reserve_width_m": 13.26,
+          "saving_m": 0.0
+        },
+        {
+          "rule": "SP-GAS-CLEARANCE",
+          "status": "sourced",
+          "reserve_width_m": 13.26,
+          "saving_m": 0.0
+        }
+      ],
+      "binding_rules": [
+        "LTA-NO-CHAMBER-CARRIAGEWAY",
+        "PUB-DRAIN-OFFSET",
+        "PUB-WATER-PARALLEL",
+        "PUB-SEWER-PARALLEL"
+      ],
+      "water_sensitivity": {
+        "clearance_m": 0.3,
+        "reserve_width_m": 12.78,
+        "saving_m": 0.48
+      },
+      "as_given": {
+        "feasible_without_waiver": true,
+        "waivers_needed": 0,
+        "waived": [],
+        "n_under_carriageway": 0,
+        "under_carriageway": [],
+        "cost_per_m": 1188.75,
+        "cost_floor_per_m": 1188.75,
+        "premium_per_m": 0.0,
+        "items": [
+          {
+            "id": "telecom",
+            "x_m": 1.45,
+            "cover_m": 1.2,
+            "zone": "left"
+          },
+          {
+            "id": "gas",
+            "x_m": 1.98,
+            "cover_m": 1.2,
+            "zone": "left"
+          },
+          {
+            "id": "water",
+            "x_m": 3.225,
+            "cover_m": 1.2,
+            "zone": "left"
+          },
+          {
+            "id": "power_hv",
+            "x_m": 12.4,
+            "cover_m": 1.2,
+            "zone": "right"
+          },
+          {
+            "id": "sewer",
+            "x_m": 13.9,
+            "cover_m": 1.2,
+            "zone": "right"
+          }
+        ],
+        "tight": [
+          {
+            "rule": "SP-GAS-CLEARANCE",
+            "items": [
+              "telecom",
+              "gas"
+            ],
+            "clearance_m": 0.3
+          },
+          {
+            "rule": "PUB-WATER-PARALLEL",
+            "items": [
+              "gas",
+              "water"
+            ],
+            "clearance_m": 1.0
+          },
+          {
+            "rule": "PUB-SEWER-PARALLEL",
+            "items": [
+              "power_hv",
+              "sewer"
+            ],
+            "clearance_m": 1.0
+          },
+          {
+            "rule": "PUB-DRAIN-OFFSET",
+            "items": [
+              "telecom",
+              "drain"
+            ],
+            "clearance_m": 0.3
+          },
+          {
+            "rule": "PUB-DRAIN-OFFSET",
+            "items": [
+              "sewer",
+              "drain"
+            ],
+            "clearance_m": 0.3
+          }
+        ]
+      },
+      "crossing": {
+        "top_depth_m": 2.6,
+        "governing_rule": "PUB-SEWER-CROSSING",
+        "governing_object": "sewer"
+      }
+    },
+    "primary": {
+      "label": "Primary access road",
+      "reserve_width_m": 21.4,
+      "carriageway_m": 13.4,
+      "verge_m": 4.0,
+      "n_utilities": 7,
+      "min_width": {
+        "verge_m": 3.88,
+        "reserve_width_m": 21.16,
+        "spare_reserve_m": 0.24,
+        "fits": true,
+        "items": [
+          {
+            "id": "sewer",
+            "x_m": 1.5,
+            "cover_m": 1.2,
+            "zone": "left"
+          },
+          {
+            "id": "water",
+            "x_m": 2.865,
+            "cover_m": 1.2,
+            "zone": "left"
+          },
+          {
+            "id": "power_hv",
+            "x_m": 4.33,
+            "cover_m": 1.0,
+            "zone": "carriageway"
+          },
+          {
+            "id": "newater",
+            "x_m": 17.39,
+            "cover_m": 1.2,
+            "zone": "right"
+          },
+          {
+            "id": "telecom_b",
+            "x_m": 18.65,
+            "cover_m": 1.2,
+            "zone": "right"
+          },
+          {
+            "id": "telecom",
+            "x_m": 19.25,
+            "cover_m": 1.2,
+            "zone": "right"
+          },
+          {
+            "id": "gas",
+            "x_m": 19.78,
+            "cover_m": 1.2,
+            "zone": "right"
+          }
+        ],
+        "tight": [
+          {
+            "rule": "PUB-SEWER-PARALLEL",
+            "items": [
+              "sewer",
+              "water"
+            ],
+            "clearance_m": 1.0
+          },
+          {
+            "rule": "PUB-WATER-PARALLEL",
+            "items": [
+              "water",
+              "power_hv"
+            ],
+            "clearance_m": 1.0
+          },
+          {
+            "rule": "PUB-WATER-PARALLEL",
+            "items": [
+              "newater",
+              "telecom_b"
+            ],
+            "clearance_m": 1.0
+          },
+          {
+            "rule": "DEFAULT-CLEARANCE",
+            "items": [
+              "telecom_b",
+              "telecom"
+            ],
+            "clearance_m": 0.3
+          },
+          {
+            "rule": "SP-GAS-CLEARANCE",
+            "items": [
+              "telecom",
+              "gas"
+            ],
+            "clearance_m": 0.3
+          },
+          {
+            "rule": "PUB-DRAIN-OFFSET",
+            "items": [
+              "sewer",
+              "drain"
+            ],
+            "clearance_m": 0.3
+          },
+          {
+            "rule": "KERB-LINE",
+            "items": [
+              "newater",
+              "kerb"
+            ],
+            "clearance_m": 0.0
+          },
+          {
+            "rule": "PUB-DRAIN-OFFSET",
+            "items": [
+              "gas",
+              "drain"
+            ],
+            "clearance_m": 0.3
+          }
+        ]
+      },
+      "relaxation": [
+        {
+          "rule": "LTA-NO-CHAMBER-CARRIAGEWAY",
+          "status": "sourced",
+          "reserve_width_m": 15.4,
+          "saving_m": 5.76
+        },
+        {
+          "rule": "PUB-WATER-PARALLEL",
+          "status": "assumption",
+          "reserve_width_m": 19.76,
+          "saving_m": 1.4
+        },
+        {
+          "rule": "PUB-SEWER-PARALLEL",
+          "status": "sourced",
+          "reserve_width_m": 20.12,
+          "saving_m": 1.04
+        },
+        {
+          "rule": "DEFAULT-CLEARANCE",
+          "status": "assumption",
+          "reserve_width_m": 20.56,
+          "saving_m": 0.6
+        },
+        {
+          "rule": "PUB-DRAIN-OFFSET",
+          "status": "sourced",
+          "reserve_width_m": 20.56,
+          "saving_m": 0.6
+        },
+        {
+          "rule": "IMDA-TELECOM-POWER",
+          "status": "sourced",
+          "reserve_width_m": 21.16,
+          "saving_m": 0.0
+        },
+        {
+          "rule": "SP-GAS-CLEARANCE",
+          "status": "sourced",
+          "reserve_width_m": 21.16,
+          "saving_m": 0.0
+        }
+      ],
+      "binding_rules": [
+        "LTA-NO-CHAMBER-CARRIAGEWAY",
+        "PUB-WATER-PARALLEL",
+        "PUB-SEWER-PARALLEL",
+        "DEFAULT-CLEARANCE",
+        "PUB-DRAIN-OFFSET"
+      ],
+      "water_sensitivity": {
+        "clearance_m": 0.3,
+        "reserve_width_m": 19.76,
+        "saving_m": 1.4
+      },
+      "as_given": {
+        "feasible_without_waiver": true,
+        "waivers_needed": 0,
+        "waived": [],
+        "n_under_carriageway": 1,
+        "under_carriageway": [
+          "power_hv"
+        ],
+        "cost_per_m": 2003.61,
+        "cost_floor_per_m": 1604.61,
+        "premium_per_m": 399.0,
+        "items": [
+          {
+            "id": "gas",
+            "x_m": 1.38,
+            "cover_m": 1.2,
+            "zone": "left"
+          },
+          {
+            "id": "telecom",
+            "x_m": 1.91,
+            "cover_m": 1.2,
+            "zone": "left"
+          },
+          {
+            "id": "telecom_b",
+            "x_m": 2.51,
+            "cover_m": 1.2,
+            "zone": "left"
+          },
+          {
+            "id": "water",
+            "x_m": 3.825,
+            "cover_m": 1.2,
+            "zone": "left"
+          },
+          {
+            "id": "power_hv",
+            "x_m": 5.29,
+            "cover_m": 1.0,
+            "zone": "carriageway"
+          },
+          {
+            "id": "sewer",
+            "x_m": 18.68,
+            "cover_m": 1.2,
+            "zone": "right"
+          },
+          {
+            "id": "newater",
+            "x_m": 19.99,
+            "cover_m": 1.2,
+            "zone": "right"
+          }
+        ],
+        "tight": [
+          {
+            "rule": "SP-GAS-CLEARANCE",
+            "items": [
+              "gas",
+              "telecom"
+            ],
+            "clearance_m": 0.3
+          },
+          {
+            "rule": "DEFAULT-CLEARANCE",
+            "items": [
+              "telecom",
+              "telecom_b"
+            ],
+            "clearance_m": 0.3
+          },
+          {
+            "rule": "PUB-WATER-PARALLEL",
+            "items": [
+              "telecom_b",
+              "water"
+            ],
+            "clearance_m": 1.0
+          },
+          {
+            "rule": "PUB-WATER-PARALLEL",
+            "items": [
+              "water",
+              "power_hv"
+            ],
+            "clearance_m": 1.0
+          },
+          {
+            "rule": "PUB-SEWER-PARALLEL",
+            "items": [
+              "sewer",
+              "newater"
+            ],
+            "clearance_m": 1.0
+          },
+          {
+            "rule": "PUB-DRAIN-OFFSET",
+            "items": [
+              "gas",
+              "drain"
+            ],
+            "clearance_m": 0.3
+          },
+          {
+            "rule": "PUB-DRAIN-OFFSET",
+            "items": [
+              "newater",
+              "drain"
+            ],
+            "clearance_m": 0.3
+          }
+        ]
+      },
+      "crossing": {
+        "top_depth_m": 2.6,
+        "governing_rule": "PUB-SEWER-CROSSING",
+        "governing_object": "sewer"
+      }
+    },
+    "arterial": {
+      "label": "Arterial road",
+      "reserve_width_m": 26.2,
+      "carriageway_m": 16.2,
+      "verge_m": 5.0,
+      "n_utilities": 9,
+      "min_width": {
+        "verge_m": 4.28,
+        "reserve_width_m": 24.76,
+        "spare_reserve_m": 1.44,
+        "fits": true,
+        "items": [
+          {
+            "id": "newater",
+            "x_m": 1.41,
+            "cover_m": 1.2,
+            "zone": "left"
+          },
+          {
+            "id": "sewer",
+            "x_m": 2.72,
+            "cover_m": 1.2,
+            "zone": "left"
+          },
+          {
+            "id": "water",
+            "x_m": 4.085,
+            "cover_m": 1.2,
+            "zone": "left"
+          },
+          {
+            "id": "power_tx",
+            "x_m": 5.7,
+            "cover_m": 1.0,
+            "zone": "carriageway"
+          },
+          {
+            "id": "power_hv",
+            "x_m": 6.75,
+            "cover_m": 1.0,
+            "zone": "carriageway"
+          },
+          {
+            "id": "telecom_b",
+            "x_m": 20.63,
+            "cover_m": 1.2,
+            "zone": "right"
+          },
+          {
+            "id": "dcs",
+            "x_m": 21.74,
+            "cover_m": 1.2,
+            "zone": "right"
+          },
+          {
+            "id": "gas",
+            "x_m": 22.78,
+            "cover_m": 1.2,
+            "zone": "right"
+          },
+          {
+            "id": "telecom",
+            "x_m": 23.31,
+            "cover_m": 1.2,
+            "zone": "right"
+          }
+        ],
+        "tight": [
+          {
+            "rule": "PUB-SEWER-PARALLEL",
+            "items": [
+              "newater",
+              "sewer"
+            ],
+            "clearance_m": 1.0
+          },
+          {
+            "rule": "PUB-SEWER-PARALLEL",
+            "items": [
+              "sewer",
+              "water"
+            ],
+            "clearance_m": 1.0
+          },
+          {
+            "rule": "PUB-WATER-PARALLEL",
+            "items": [
+              "water",
+              "power_tx"
+            ],
+            "clearance_m": 1.0
+          },
+          {
+            "rule": "DEFAULT-CLEARANCE",
+            "items": [
+              "power_tx",
+              "power_hv"
+            ],
+            "clearance_m": 0.3
+          },
+          {
+            "rule": "DEFAULT-CLEARANCE",
+            "items": [
+              "telecom_b",
+              "dcs"
+            ],
+            "clearance_m": 0.3
+          },
+          {
+            "rule": "SP-GAS-CLEARANCE",
+            "items": [
+              "dcs",
+              "gas"
+            ],
+            "clearance_m": 0.3
+          },
+          {
+            "rule": "SP-GAS-CLEARANCE",
+            "items": [
+              "gas",
+              "telecom"
+            ],
+            "clearance_m": 0.3
+          },
+          {
+            "rule": "PUB-DRAIN-OFFSET",
+            "items": [
+              "newater",
+              "drain"
+            ],
+            "clearance_m": 0.3
+          },
+          {
+            "rule": "KERB-LINE",
+            "items": [
+              "telecom_b",
+              "kerb"
+            ],
+            "clearance_m": 0.0
+          },
+          {
+            "rule": "PUB-DRAIN-OFFSET",
+            "items": [
+              "telecom",
+              "drain"
+            ],
+            "clearance_m": 0.3
+          }
+        ]
+      },
+      "relaxation": [
+        {
+          "rule": "LTA-NO-CHAMBER-CARRIAGEWAY",
+          "status": "sourced",
+          "reserve_width_m": 18.2,
+          "saving_m": 6.56
+        },
+        {
+          "rule": "PUB-DRAIN-OFFSET",
+          "status": "sourced",
+          "reserve_width_m": 24.16,
+          "saving_m": 0.6
+        },
+        {
+          "rule": "PUB-WATER-PARALLEL",
+          "status": "assumption",
+          "reserve_width_m": 24.16,
+          "saving_m": 0.6
+        },
+        {
+          "rule": "DEFAULT-CLEARANCE",
+          "status": "assumption",
+          "reserve_width_m": 24.7,
+          "saving_m": 0.06
+        },
+        {
+          "rule": "IMDA-TELECOM-POWER",
+          "status": "sourced",
+          "reserve_width_m": 24.76,
+          "saving_m": 0.0
+        },
+        {
+          "rule": "PUB-SEWER-PARALLEL",
+          "status": "sourced",
+          "reserve_width_m": 24.76,
+          "saving_m": 0.0
+        },
+        {
+          "rule": "SP-GAS-CLEARANCE",
+          "status": "sourced",
+          "reserve_width_m": 24.76,
+          "saving_m": 0.0
+        }
+      ],
+      "binding_rules": [
+        "LTA-NO-CHAMBER-CARRIAGEWAY",
+        "PUB-DRAIN-OFFSET",
+        "PUB-WATER-PARALLEL",
+        "DEFAULT-CLEARANCE"
+      ],
+      "water_sensitivity": {
+        "clearance_m": 0.3,
+        "reserve_width_m": 24.16,
+        "saving_m": 0.6
+      },
+      "as_given": {
+        "feasible_without_waiver": true,
+        "waivers_needed": 0,
+        "waived": [],
+        "n_under_carriageway": 2,
+        "under_carriageway": [
+          "power_tx",
+          "power_hv"
+        ],
+        "cost_per_m": 3483.69,
+        "cost_floor_per_m": 2548.44,
+        "premium_per_m": 935.25,
+        "items": [
+          {
+            "id": "dcs",
+            "x_m": 1.96,
+            "cover_m": 1.2,
+            "zone": "left"
+          },
+          {
+            "id": "telecom_b",
+            "x_m": 3.07,
+            "cover_m": 1.2,
+            "zone": "left"
+          },
+          {
+            "id": "water",
+            "x_m": 4.385,
+            "cover_m": 1.2,
+            "zone": "left"
+          },
+          {
+            "id": "power_tx",
+            "x_m": 6.0,
+            "cover_m": 1.0,
+            "zone": "carriageway"
+          },
+          {
+            "id": "power_hv",
+            "x_m": 7.05,
+            "cover_m": 1.0,
+            "zone": "carriageway"
+          },
+          {
+            "id": "telecom",
+            "x_m": 21.67,
+            "cover_m": 1.2,
+            "zone": "right"
+          },
+          {
+            "id": "gas",
+            "x_m": 22.2,
+            "cover_m": 1.2,
+            "zone": "right"
+          },
+          {
+            "id": "newater",
+            "x_m": 23.39,
+            "cover_m": 1.2,
+            "zone": "right"
+          },
+          {
+            "id": "sewer",
+            "x_m": 24.7,
+            "cover_m": 1.2,
+            "zone": "right"
+          }
+        ],
+        "tight": [
+          {
+            "rule": "DEFAULT-CLEARANCE",
+            "items": [
+              "dcs",
+              "telecom_b"
+            ],
+            "clearance_m": 0.3
+          },
+          {
+            "rule": "PUB-WATER-PARALLEL",
+            "items": [
+              "telecom_b",
+              "water"
+            ],
+            "clearance_m": 1.0
+          },
+          {
+            "rule": "PUB-WATER-PARALLEL",
+            "items": [
+              "water",
+              "power_tx"
+            ],
+            "clearance_m": 1.0
+          },
+          {
+            "rule": "DEFAULT-CLEARANCE",
+            "items": [
+              "power_tx",
+              "power_hv"
+            ],
+            "clearance_m": 0.3
+          },
+          {
+            "rule": "SP-GAS-CLEARANCE",
+            "items": [
+              "telecom",
+              "gas"
+            ],
+            "clearance_m": 0.3
+          },
+          {
+            "rule": "PUB-WATER-PARALLEL",
+            "items": [
+              "gas",
+              "newater"
+            ],
+            "clearance_m": 1.0
+          },
+          {
+            "rule": "PUB-SEWER-PARALLEL",
+            "items": [
+              "newater",
+              "sewer"
+            ],
+            "clearance_m": 1.0
+          },
+          {
+            "rule": "PUB-DRAIN-OFFSET",
+            "items": [
+              "dcs",
+              "drain"
+            ],
+            "clearance_m": 0.3
+          },
+          {
+            "rule": "PUB-DRAIN-OFFSET",
+            "items": [
+              "sewer",
+              "drain"
+            ],
+            "clearance_m": 0.3
+          }
+        ]
+      },
+      "crossing": {
+        "top_depth_m": 2.6,
+        "governing_rule": "PUB-SEWER-CROSSING",
+        "governing_object": "sewer"
+      }
+    },
+    "upgrade": {
+      "label": "Primary reserve, arterial utility set",
+      "reserve_width_m": 21.4,
+      "carriageway_m": 13.4,
+      "verge_m": 4.0,
+      "n_utilities": 9,
+      "min_width": {
+        "verge_m": 4.28,
+        "reserve_width_m": 21.96,
+        "spare_reserve_m": -0.56,
+        "fits": false,
+        "items": [
+          {
+            "id": "sewer",
+            "x_m": 1.5,
+            "cover_m": 1.2,
+            "zone": "left"
+          },
+          {
+            "id": "newater",
+            "x_m": 2.81,
+            "cover_m": 1.2,
+            "zone": "left"
+          },
+          {
+            "id": "water",
+            "x_m": 4.085,
+            "cover_m": 1.2,
+            "zone": "left"
+          },
+          {
+            "id": "power_tx",
+            "x_m": 5.7,
+            "cover_m": 1.0,
+            "zone": "carriageway"
+          },
+          {
+            "id": "power_hv",
+            "x_m": 6.75,
+            "cover_m": 1.0,
+            "zone": "carriageway"
+          },
+          {
+            "id": "dcs",
+            "x_m": 18.34,
+            "cover_m": 1.2,
+            "zone": "right"
+          },
+          {
+            "id": "gas",
+            "x_m": 19.38,
+            "cover_m": 1.2,
+            "zone": "right"
+          },
+          {
+            "id": "telecom_b",
+            "x_m": 19.91,
+            "cover_m": 1.2,
+            "zone": "right"
+          },
+          {
+            "id": "telecom",
+            "x_m": 20.51,
+            "cover_m": 1.2,
+            "zone": "right"
+          }
+        ],
+        "tight": [
+          {
+            "rule": "PUB-SEWER-PARALLEL",
+            "items": [
+              "sewer",
+              "newater"
+            ],
+            "clearance_m": 1.0
+          },
+          {
+            "rule": "PUB-WATER-PARALLEL",
+            "items": [
+              "newater",
+              "water"
+            ],
+            "clearance_m": 1.0
+          },
+          {
+            "rule": "PUB-WATER-PARALLEL",
+            "items": [
+              "water",
+              "power_tx"
+            ],
+            "clearance_m": 1.0
+          },
+          {
+            "rule": "DEFAULT-CLEARANCE",
+            "items": [
+              "power_tx",
+              "power_hv"
+            ],
+            "clearance_m": 0.3
+          },
+          {
+            "rule": "SP-GAS-CLEARANCE",
+            "items": [
+              "dcs",
+              "gas"
+            ],
+            "clearance_m": 0.3
+          },
+          {
+            "rule": "SP-GAS-CLEARANCE",
+            "items": [
+              "gas",
+              "telecom_b"
+            ],
+            "clearance_m": 0.3
+          },
+          {
+            "rule": "DEFAULT-CLEARANCE",
+            "items": [
+              "telecom_b",
+              "telecom"
+            ],
+            "clearance_m": 0.3
+          },
+          {
+            "rule": "PUB-DRAIN-OFFSET",
+            "items": [
+              "sewer",
+              "drain"
+            ],
+            "clearance_m": 0.3
+          },
+          {
+            "rule": "KERB-LINE",
+            "items": [
+              "dcs",
+              "kerb"
+            ],
+            "clearance_m": 0.0
+          },
+          {
+            "rule": "PUB-DRAIN-OFFSET",
+            "items": [
+              "telecom",
+              "drain"
+            ],
+            "clearance_m": 0.3
+          }
+        ]
+      },
+      "relaxation": [
+        {
+          "rule": "LTA-NO-CHAMBER-CARRIAGEWAY",
+          "status": "sourced",
+          "reserve_width_m": 15.4,
+          "saving_m": 6.56
+        },
+        {
+          "rule": "PUB-DRAIN-OFFSET",
+          "status": "sourced",
+          "reserve_width_m": 21.36,
+          "saving_m": 0.6
+        },
+        {
+          "rule": "PUB-WATER-PARALLEL",
+          "status": "assumption",
+          "reserve_width_m": 21.36,
+          "saving_m": 0.6
+        },
+        {
+          "rule": "DEFAULT-CLEARANCE",
+          "status": "assumption",
+          "reserve_width_m": 21.9,
+          "saving_m": 0.06
+        },
+        {
+          "rule": "IMDA-TELECOM-POWER",
+          "status": "sourced",
+          "reserve_width_m": 21.96,
+          "saving_m": 0.0
+        },
+        {
+          "rule": "PUB-SEWER-PARALLEL",
+          "status": "sourced",
+          "reserve_width_m": 21.96,
+          "saving_m": 0.0
+        },
+        {
+          "rule": "SP-GAS-CLEARANCE",
+          "status": "sourced",
+          "reserve_width_m": 21.96,
+          "saving_m": 0.0
+        }
+      ],
+      "binding_rules": [
+        "LTA-NO-CHAMBER-CARRIAGEWAY",
+        "PUB-DRAIN-OFFSET",
+        "PUB-WATER-PARALLEL",
+        "DEFAULT-CLEARANCE"
+      ],
+      "water_sensitivity": {
+        "clearance_m": 0.3,
+        "reserve_width_m": 21.36,
+        "saving_m": 0.6
+      },
+      "as_given": {
+        "feasible_without_waiver": false,
+        "waivers_needed": 1,
+        "waived": [
+          "sewer"
+        ],
+        "n_under_carriageway": 3,
+        "under_carriageway": [
+          "sewer",
+          "power_tx",
+          "power_hv"
+        ],
+        "cost_per_m": 3881.19,
+        "cost_floor_per_m": 2548.44,
+        "premium_per_m": 1332.75,
+        "items": [
+          {
+            "id": "telecom",
+            "x_m": 1.45,
+            "cover_m": 1.2,
+            "zone": "left"
+          },
+          {
+            "id": "telecom_b",
+            "x_m": 2.05,
+            "cover_m": 1.2,
+            "zone": "left"
+          },
+          {
+            "id": "gas",
+            "x_m": 2.58,
+            "cover_m": 1.2,
+            "zone": "left"
+          },
+          {
+            "id": "water",
+            "x_m": 3.825,
+            "cover_m": 1.2,
+            "zone": "left"
+          },
+          {
+            "id": "sewer",
+            "x_m": 5.19,
+            "cover_m": 1.1,
+            "zone": "carriageway"
+          },
+          {
+            "id": "power_tx",
+            "x_m": 6.84,
+            "cover_m": 1.0,
+            "zone": "carriageway"
+          },
+          {
+            "id": "power_hv",
+            "x_m": 7.89,
+            "cover_m": 1.0,
+            "zone": "carriageway"
+          },
+          {
+            "id": "newater",
+            "x_m": 17.67,
+            "cover_m": 1.2,
+            "zone": "right"
+          },
+          {
+            "id": "dcs",
+            "x_m": 19.44,
+            "cover_m": 1.2,
+            "zone": "right"
+          }
+        ],
+        "tight": [
+          {
+            "rule": "DEFAULT-CLEARANCE",
+            "items": [
+              "telecom",
+              "telecom_b"
+            ],
+            "clearance_m": 0.3
+          },
+          {
+            "rule": "SP-GAS-CLEARANCE",
+            "items": [
+              "telecom_b",
+              "gas"
+            ],
+            "clearance_m": 0.3
+          },
+          {
+            "rule": "PUB-WATER-PARALLEL",
+            "items": [
+              "gas",
+              "water"
+            ],
+            "clearance_m": 1.0
+          },
+          {
+            "rule": "PUB-SEWER-PARALLEL",
+            "items": [
+              "water",
+              "sewer"
+            ],
+            "clearance_m": 1.0
+          },
+          {
+            "rule": "PUB-SEWER-PARALLEL",
+            "items": [
+              "sewer",
+              "power_tx"
+            ],
+            "clearance_m": 1.0
+          },
+          {
+            "rule": "DEFAULT-CLEARANCE",
+            "items": [
+              "power_tx",
+              "power_hv"
+            ],
+            "clearance_m": 0.3
+          },
+          {
+            "rule": "PUB-WATER-PARALLEL",
+            "items": [
+              "newater",
+              "dcs"
+            ],
+            "clearance_m": 1.0
+          },
+          {
+            "rule": "PUB-DRAIN-OFFSET",
+            "items": [
+              "telecom",
+              "drain"
+            ],
+            "clearance_m": 0.3
+          },
+          {
+            "rule": "PUB-DRAIN-OFFSET",
+            "items": [
+              "dcs",
+              "drain"
+            ],
+            "clearance_m": 0.3
+          }
+        ]
+      },
+      "crossing": {
+        "top_depth_m": 2.53,
+        "governing_rule": "PUB-WATER-CROSSING",
+        "governing_object": "water"
+      }
+    }
+  },
+  "brownfield": {
+    "reserve": "primary",
+    "n_existing": 6,
+    "new": [
+      "newater"
+    ],
+    "as_built": {
+      "items": [
+        {
+          "id": "sewer",
+          "x_m": 1.9,
+          "cover_m": 1.6,
+          "zone": "left"
+        },
+        {
+          "id": "gas",
+          "x_m": 2.6,
+          "cover_m": 1.2,
+          "zone": "left"
+        },
+        {
+          "id": "telecom",
+          "x_m": 3.4,
+          "cover_m": 0.8,
+          "zone": "left"
+        },
+        {
+          "id": "power_hv",
+          "x_m": 6.0,
+          "cover_m": 1.0,
+          "zone": "carriageway"
+        },
+        {
+          "id": "water",
+          "x_m": 18.6,
+          "cover_m": 1.2,
+          "zone": "right"
+        },
+        {
+          "id": "telecom_b",
+          "x_m": 19.2,
+          "cover_m": 1.2,
+          "zone": "right"
+        }
+      ],
+      "violations": [
+        {
+          "rule": "LTA-DEPTH-SIDETABLE",
+          "agency": "LTA",
+          "status": "sourced",
+          "kind": "cover",
+          "items": [
+            "telecom"
+          ],
+          "required_m": 1.2,
+          "actual_m": 0.8,
+          "shortfall_m": 0.4,
+          "note": "cover to top of utility"
+        },
+        {
+          "rule": "PUB-SEWER-PARALLEL",
+          "agency": "PUB",
+          "status": "sourced",
+          "kind": "parallel",
+          "items": [
+            "sewer",
+            "gas"
+          ],
+          "required_m": 1.0,
+          "actual_m": 0.42,
+          "shortfall_m": 0.58,
+          "note": ""
+        },
+        {
+          "rule": "PUB-WATER-PARALLEL",
+          "agency": "PUB",
+          "status": "assumption",
+          "kind": "parallel",
+          "items": [
+            "water",
+            "telecom_b"
+          ],
+          "required_m": 1.0,
+          "actual_m": 0.285,
+          "shortfall_m": 0.715,
+          "note": ""
+        }
+      ],
+      "summary": {
+        "total": 3,
+        "by_rule": {
+          "LTA-DEPTH-SIDETABLE": 1,
+          "PUB-SEWER-PARALLEL": 1,
+          "PUB-WATER-PARALLEL": 1
+        },
+        "by_agency": {
+          "LTA": 1,
+          "PUB": 2
+        }
+      },
+      "in_conflict": [
+        "gas",
+        "sewer",
+        "telecom",
+        "telecom_b",
+        "water"
+      ]
+    },
+    "cure_only": {
+      "cost_per_m": 926.46,
+      "diverted": [
+        "gas",
+        "telecom",
+        "telecom_b"
+      ],
+      "n_diverted": 3,
+      "new_utility_cost_per_m": 0,
+      "diversion_cost_per_m": 926.46,
+      "items": [
+        {
+          "id": "sewer",
+          "x_m": 1.9,
+          "cover_m": 1.6,
+          "zone": "left"
+        },
+        {
+          "id": "telecom_b",
+          "x_m": 3.25,
+          "cover_m": 1.2,
+          "zone": "left"
+        },
+        {
+          "id": "telecom",
+          "x_m": 3.85,
+          "cover_m": 1.2,
+          "zone": "left"
+        },
+        {
+          "id": "power_hv",
+          "x_m": 6.0,
+          "cover_m": 1.0,
+          "zone": "carriageway"
+        },
+        {
+          "id": "water",
+          "x_m": 18.6,
+          "cover_m": 1.2,
+          "zone": "right"
+        },
+        {
+          "id": "gas",
+          "x_m": 20.02,
+          "cover_m": 1.2,
+          "zone": "right"
+        }
+      ],
+      "tight": [
+        {
+          "rule": "PUB-SEWER-PARALLEL",
+          "items": [
+            "sewer",
+            "telecom_b"
+          ],
+          "clearance_m": 1.0
+        },
+        {
+          "rule": "DEFAULT-CLEARANCE",
+          "items": [
+            "telecom_b",
+            "telecom"
+          ],
+          "clearance_m": 0.3
+        },
+        {
+          "rule": "KERB-LINE",
+          "items": [
+            "telecom",
+            "kerb"
+          ],
+          "clearance_m": 0.0
+        },
+        {
+          "rule": "PUB-DRAIN-OFFSET",
+          "items": [
+            "gas",
+            "drain"
+          ],
+          "clearance_m": 0.3
+        }
+      ],
+      "new_zone": {}
+    },
+    "cure_and_add": {
+      "cost_per_m": 1471.11,
+      "diverted": [
+        "gas",
+        "telecom",
+        "telecom_b",
+        "water"
+      ],
+      "n_diverted": 4,
+      "new_utility_cost_per_m": 193.11,
+      "diversion_cost_per_m": 1278.0,
+      "items": [
+        {
+          "id": "sewer",
+          "x_m": 1.9,
+          "cover_m": 1.6,
+          "zone": "left"
+        },
+        {
+          "id": "newater",
+          "x_m": 3.21,
+          "cover_m": 1.2,
+          "zone": "left"
+        },
+        {
+          "id": "power_hv",
+          "x_m": 6.0,
+          "cover_m": 1.0,
+          "zone": "carriageway"
+        },
+        {
+          "id": "telecom",
+          "x_m": 17.56,
+          "cover_m": 1.2,
+          "zone": "right"
+        },
+        {
+          "id": "telecom_b",
+          "x_m": 18.16,
+          "cover_m": 1.2,
+          "zone": "right"
+        },
+        {
+          "id": "gas",
+          "x_m": 18.69,
+          "cover_m": 1.2,
+          "zone": "right"
+        },
+        {
+          "id": "water",
+          "x_m": 19.935,
+          "cover_m": 1.2,
+          "zone": "right"
+        }
+      ],
+      "tight": [
+        {
+          "rule": "PUB-SEWER-PARALLEL",
+          "items": [
+            "sewer",
+            "newater"
+          ],
+          "clearance_m": 1.0
+        },
+        {
+          "rule": "DEFAULT-CLEARANCE",
+          "items": [
+            "telecom",
+            "telecom_b"
+          ],
+          "clearance_m": 0.3
+        },
+        {
+          "rule": "SP-GAS-CLEARANCE",
+          "items": [
+            "telecom_b",
+            "gas"
+          ],
+          "clearance_m": 0.3
+        },
+        {
+          "rule": "PUB-WATER-PARALLEL",
+          "items": [
+            "gas",
+            "water"
+          ],
+          "clearance_m": 1.0
+        },
+        {
+          "rule": "PUB-DRAIN-OFFSET",
+          "items": [
+            "water",
+            "drain"
+          ],
+          "clearance_m": 0.3
+        }
+      ],
+      "new_zone": {
+        "newater": "left"
+      }
+    },
+    "extra_cost_of_adding_per_m": 544.65,
+    "new_utility_greenfield_cost_per_m": 193.11,
+    "congestion_premium_per_m": 351.54,
+    "diversion_unit_costs": [
+      {
+        "id": "sewer",
+        "sidetable_per_m": 393.75,
+        "carriageway_per_m": 990.0
+      },
+      {
+        "id": "gas",
+        "sidetable_per_m": 258.21,
+        "carriageway_per_m": 597.36
+      },
+      {
+        "id": "telecom",
+        "sidetable_per_m": 334.125,
+        "carriageway_per_m": 783.0
+      },
+      {
+        "id": "power_hv",
+        "sidetable_per_m": 445.5,
+        "carriageway_per_m": 1044.0
+      },
+      {
+        "id": "water",
+        "sidetable_per_m": 351.54,
+        "carriageway_per_m": 825.84
+      },
+      {
+        "id": "telecom_b",
+        "sidetable_per_m": 334.125,
+        "carriageway_per_m": 783.0
+      }
+    ]
+  }
+}
