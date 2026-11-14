@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768.4 434.0" width="768.4" height="434.0" font-family="Arial, Helvetica, sans-serif">
+<rect width="768.4" height="434.0" fill="#ffffff"/>
+<text x="30.0" y="22" font-size="15" font-weight="bold" fill="#222222">Local access road: cheapest compliant layout in a 15.4 m reserve</text>
+<text x="30.0" y="40" font-size="11" fill="#555555">Illustrative cross-section, personal desk study. Not an agency drawing. Dimensions in metres. </text>
+<rect x="30.0" y="150.0" width="708.4" height="154.0" fill="#f3ead9"/>
+<rect x="214.0" y="143.0" width="340.4" height="7" fill="#555555"/>
+<rect x="30.0" y="146.0" width="184.0" height="4" fill="#9bbf7f"/>
+<rect x="554.4" y="146.0" width="184.0" height="4" fill="#9bbf7f"/>
+<rect x="30.0" y="146.0" width="46.0" height="74.0" fill="#cfe3f5" stroke="#5b7c99"/>
+<text x="53.0" y="185.0" font-size="10" text-anchor="middle" fill="#34536e">drain</text>
+<rect x="692.4" y="146.0" width="46.0" height="74.0" fill="#cfe3f5" stroke="#5b7c99"/>
+<text x="715.4" y="185.0" font-size="10" text-anchor="middle" fill="#34536e">drain</text>
+<line x1="214.0" y1="138.0" x2="214.0" y2="304.0" stroke="#999999" stroke-dasharray="4 4"/>
+<line x1="554.4" y1="138.0" x2="554.4" y2="304.0" stroke="#999999" stroke-dasharray="4 4"/>
+<line x1="30.0" y1="112.0" x2="738.4" y2="112.0" stroke="#333333"/>
+<line x1="30.0" y1="107.0" x2="30.0" y2="117.0" stroke="#333333"/>
+<line x1="214.0" y1="107.0" x2="214.0" y2="117.0" stroke="#333333"/>
+<line x1="554.4" y1="107.0" x2="554.4" y2="117.0" stroke="#333333"/>
+<line x1="738.4" y1="107.0" x2="738.4" y2="117.0" stroke="#333333"/>
+<text x="122.0" y="104.0" font-size="11" text-anchor="middle" fill="#333333">sidetable 4.00</text>
+<text x="384.2" y="104.0" font-size="11" text-anchor="middle" fill="#333333">carriageway 7.40</text>
+<text x="646.4" y="104.0" font-size="11" text-anchor="middle" fill="#333333">sidetable 4.00</text>
+<text x="738.4" y="86.0" font-size="11" text-anchor="end" fill="#333333">road reserve 15.40</text>
+<rect x="89.8" y="234.0" width="13.8" height="21.0" fill="#2ca02c" stroke="#222222" stroke-width="1"/>
+<line x1="96.7" y1="150.0" x2="96.7" y2="234.0" stroke="#777777" stroke-width="0.7"/>
+<line x1="96.7" y1="255.0" x2="96.7" y2="310.0" stroke="#999999" stroke-width="0.6" stroke-dasharray="2 2"/>
+<text x="96.7" y="320.0" font-size="10" text-anchor="middle" fill="#222222">telecom</text>
+<text x="96.7" y="331.0" font-size="9" text-anchor="middle" fill="#555555">cover 1.20</text>
+<ellipse cx="121.1" cy="239.6" rx="3.7" ry="5.6" fill="#e6b800" stroke="#222222" stroke-width="1"/>
+<line x1="121.1" y1="150.0" x2="121.1" y2="234.0" stroke="#777777" stroke-width="0.7"/>
+<line x1="121.1" y1="245.2" x2="121.1" y2="335.0" stroke="#999999" stroke-width="0.6" stroke-dasharray="2 2"/>
+<text x="121.1" y="345.0" font-size="10" text-anchor="middle" fill="#222222">gas</text>
+<text x="121.1" y="356.0" font-size="9" text-anchor="middle" fill="#555555">cover 1.20</text>
+<ellipse cx="178.3" cy="245.6" rx="7.6" ry="11.6" fill="#2f7ed8" stroke="#222222" stroke-width="1"/>
+<line x1="178.3" y1="150.0" x2="178.3" y2="234.0" stroke="#777777" stroke-width="0.7"/>
+<line x1="178.3" y1="257.1" x2="178.3" y2="360.0" stroke="#999999" stroke-width="0.6" stroke-dasharray="2 2"/>
+<text x="178.3" y="370.0" font-size="10" text-anchor="middle" fill="#222222">water</text>
+<text x="178.3" y="381.0" font-size="9" text-anchor="middle" fill="#555555">cover 1.20</text>
+<rect x="586.6" y="234.0" width="27.6" height="21.0" fill="#d62728" stroke="#222222" stroke-width="1"/>
+<line x1="600.4" y1="150.0" x2="600.4" y2="234.0" stroke="#777777" stroke-width="0.7"/>
+<line x1="600.4" y1="255.0" x2="600.4" y2="310.0" stroke="#999999" stroke-width="0.6" stroke-dasharray="2 2"/>
+<text x="600.4" y="320.0" font-size="10" text-anchor="middle" fill="#222222">power_hv</text>
+<text x="600.4" y="331.0" font-size="9" text-anchor="middle" fill="#555555">cover 1.20</text>
+<ellipse cx="669.4" cy="248.0" rx="9.2" ry="14.0" fill="#8a5a2b" stroke="#222222" stroke-width="1"/>
+<line x1="669.4" y1="150.0" x2="669.4" y2="234.0" stroke="#777777" stroke-width="0.7"/>
+<line x1="669.4" y1="262.0" x2="669.4" y2="335.0" stroke="#999999" stroke-width="0.6" stroke-dasharray="2 2"/>
+<text x="669.4" y="345.0" font-size="10" text-anchor="middle" fill="#222222">sewer</text>
+<text x="669.4" y="356.0" font-size="9" text-anchor="middle" fill="#555555">cover 1.20</text>
+<line x1="103.6" y1="170.0" x2="117.4" y2="170.0" stroke="#cc0000" stroke-width="2"/>
+<text x="110.5" y="165.0" font-size="9" text-anchor="middle" fill="#cc0000">0.30</text>
+<line x1="124.8" y1="192.0" x2="170.8" y2="192.0" stroke="#cc0000" stroke-width="2"/>
+<text x="147.8" y="187.0" font-size="9" text-anchor="middle" fill="#cc0000">1.00</text>
+<line x1="614.2" y1="170.0" x2="660.2" y2="170.0" stroke="#cc0000" stroke-width="2"/>
+<text x="637.2" y="165.0" font-size="9" text-anchor="middle" fill="#cc0000">1.00</text>
+<rect x="30.0" y="411.0" width="12" height="10" fill="#2f7ed8" stroke="#222222"/>
+<text x="46.0" y="420.0" font-size="10" fill="#222222">water</text>
+<rect x="108.0" y="411.0" width="12" height="10" fill="#8a5a2b" stroke="#222222"/>
+<text x="124.0" y="420.0" font-size="10" fill="#222222">sewer</text>
+<rect x="186.0" y="411.0" width="12" height="10" fill="#e6b800" stroke="#222222"/>
+<text x="202.0" y="420.0" font-size="10" fill="#222222">gas</text>
+<rect x="264.0" y="411.0" width="12" height="10" fill="#d62728" stroke="#222222"/>
+<text x="280.0" y="420.0" font-size="10" fill="#222222">power</text>
+<rect x="342.0" y="411.0" width="12" height="10" fill="#2ca02c" stroke="#222222"/>
+<text x="358.0" y="420.0" font-size="10" fill="#222222">telecom</text>
+<rect x="420.0" y="411.0" width="12" height="10" fill="#17a2b8" stroke="#222222"/>
+<text x="436.0" y="420.0" font-size="10" fill="#222222">dcs</text>
+<text x="508.0" y="420.0" font-size="10" fill="#cc0000">red: clearance at its minimum, or a conflict</text>
+</svg>

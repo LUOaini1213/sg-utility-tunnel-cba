@@ -1,6 +1,6 @@
 {
   "n_mutants": 30,
-  "tests_collected": 34,
+  "tests_collected": 97,
   "first_run": {
     "total": 30,
     "killed": 13,
@@ -95,6 +95,37 @@
   "final": {
     "total": 30,
     "killed": 30,
+    "survivors": []
+  },
+  "corridor_first": {
+    "total": 31,
+    "killed": 27,
+    "survivors": [
+      {
+        "id": 2,
+        "file": "cstcba/corridor.py",
+        "mutation": "if hit and best_id is None:"
+      },
+      {
+        "id": 25,
+        "file": "cstcba/corridor_opt.py",
+        "mutation": "m.add({iz(i, 1): 1, im(i): 1}, -np.inf, 2)"
+      },
+      {
+        "id": 30,
+        "file": "cstcba/corridor_run.py",
+        "mutation": "out[\"extra_cost_of_adding_per_m\"] + green"
+      },
+      {
+        "id": 31,
+        "file": "cstcba/corridor_run.py",
+        "mutation": "waivers >= 0,"
+      }
+    ]
+  },
+  "corridor_final": {
+    "total": 31,
+    "killed": 31,
     "survivors": []
   }
 }

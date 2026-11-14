@@ -1,0 +1,247 @@
+# Utility corridor cross-section: agency clearance rules, utility sizes and example road reserves.
+# Personal desk study on public documents; not a URA/agency study and not a design standard.
+# status: sourced    -> figure read from the cited public document and clause (see `sources`)
+# status: assumption -> author's assumption because no public figure was found; never agency guidance
+# All lengths in metres. Clearances are applied as the clear horizontal gap between the outlines of
+# parallel services, which is sufficient (conservative) for rules worded as all-round clearances.
+
+sources:
+  C1:
+    title: "LTA, Code of Practice for Works on Public Streets, April 2026 Edition"
+    url: "https://www.lta.gov.sg/content/dam/ltagov/industry_innovations/industry_matters/development_construction_resources/Street_Work_Proposals/codes_of_practice/Code_of_Practice_for_Works_on_Public_Streets_Apr_2026.pdf"
+  C2:
+    title: "PUB, Code of Practice on Sewerage and Sanitary Works, 3rd Edition, March 2025"
+    url: "https://www.pub.gov.sg/-/media/PUB/PDF/Code-of-Practice-on-Sewerage-and-Sanitary-Works-3rd-Edition--Mar-2025.pdf"
+  C3:
+    title: "PUB (WSN)/PUB (CWD) Advisory Note - Prevention of Damage to Water Pipes, Revised Edition January 2025"
+    url: "https://www.pub.gov.sg/-/media/PUB/PDF/WSN/PUB-WSN--CWD-Advisory-Prevention-of-Damage-to-Watermains-Jan-2025.pdf"
+  C4:
+    title: "PUB, Code of Practice on Surface Water Drainage, 7th Edition (Dec 2018) with Addendum No. 3 (April 2025)"
+    url: "https://www.pub.gov.sg/-/media/PUB/PDF/Code-of-Practices-and-Submission-Guidelines/Surface-Water-Drainage/Code-of-Practice-on-Surface-Water-Drainage.pdf"
+  C5:
+    title: "IMDA, Code of Practice for Info-communication Facilities in Buildings (COPIF 2018), 15 December 2018"
+    url: "https://www.imda.gov.sg/assets/daaa4d99-1b77-4c81-bda2-2073828fc02b.pdf"
+  C6:
+    title: "SP PowerGrid (agent for PowerGas), Letter of Requirements for Earthworks - Gas (Low Pressure), form GDP-24 (0923)"
+    url: "https://spgroup.com.sg/dam/jcr:88c44424-1f7b-4f2b-84fd-6daefbd5cf8e/%20Letter%20of%20Requirements%20for%20Gas%20(Low%20Pressure).pdf"
+  C7:
+    title: "PowerGas, Requirements for Distribution Gas Pipe Diversion Works (published as Annex B of an SFA tender)"
+    url: "https://www.sfa.gov.sg/docs/default-source/food-farming/tender-document/sas-2026-tender/annex-b-st-28i.pdf"
+
+rules:
+  - id: LTA-DEPTH-CARRIAGEWAY
+    agency: LTA
+    kind: cover
+    zone: carriageway
+    value_m: 1.0
+    status: sourced
+    source: C1
+    clause: "cl. 6.4.1, Table 6.1 (major arterial and primary/local access: road carriageway)"
+    text: "Minimum depth from road surface to top of utility under the carriageway"
+  - id: LTA-DEPTH-SIDETABLE
+    agency: LTA
+    kind: cover
+    zone: sidetable
+    value_m: 1.2
+    status: sourced
+    source: C1
+    clause: "cl. 6.4.1, Table 6.1 (sidetable)"
+    text: "Minimum depth from sidetable surface to top of utility"
+  - id: LTA-NO-CHAMBER-CARRIAGEWAY
+    agency: LTA
+    kind: chamber_ban
+    zone: carriageway
+    status: sourced
+    source: C1
+    clause: "cl. 6.5.1"
+    text: "No new manholes, inspection chambers or valves on the road; a utility that needs them stays off the carriageway unless LTA waives"
+  - id: LTA-NO-STACKING
+    agency: LTA
+    kind: no_stacking
+    status: sourced
+    source: C1
+    clause: "cl. 6.4.2(d) (stated as an example of other agencies' requirements); also C2 cl. 1.2.5(a) and C6 cl. 2.6.15"
+    text: "No service laid over and parallel to another service (plan outlines must not overlap)"
+  - id: PUB-SEWER-PARALLEL
+    agency: PUB
+    kind: parallel
+    between: [sewer, "*"]
+    value_m: 1.0
+    status: sourced
+    source: C2
+    clause: "cl. 1.2.5(a)"
+    text: "Utilities laid parallel to a sewer keep 1 m horizontal clearance from the sewer edge"
+  - id: PUB-SEWER-CROSSING
+    agency: PUB
+    kind: crossing
+    trunk: sewer
+    value_m: 1.0
+    must_undercross: false
+    status: sourced
+    source: C2
+    clause: "cl. 1.2.5(a)"
+    text: "Utilities may over-cross or under-cross a sewer at 1 m vertical clearance"
+  - id: PUB-SEWER-DEPTH
+    agency: PUB
+    kind: invert_depth
+    type: sewer
+    value_m: 1.5
+    status: sourced
+    source: C2
+    clause: "cl. 3.2.1(d)(ii)"
+    text: "Sewers laid at a minimum depth of 1.5 m below ground"
+    interpretation: "The clause does not say where depth is measured; taken here to the pipe invert (assumption)"
+  - id: PUB-WATER-COVER
+    agency: PUB
+    kind: cover_type
+    type: water
+    value_m: 1.0
+    status: sourced
+    source: C3
+    clause: "Appendix 1, para 3.A"
+    text: "Buried water pipes require a minimum cover of one metre"
+  - id: PUB-WATER-CROSSING
+    agency: PUB
+    kind: crossing
+    trunk: water
+    value_m: 1.0
+    must_undercross: true
+    status: sourced
+    source: C3
+    clause: "Appendix 1, para 3.C"
+    text: "All services must undercross water pipes with 1 m clearance all round"
+  - id: PUB-WATER-PARALLEL
+    agency: PUB
+    kind: parallel
+    between: [water, "*"]
+    value_m: 1.0
+    status: assumption
+    source: C3
+    clause: "none found for parallel services; value borrowed from the crossing clearance in para 3.C"
+    text: "ASSUMPTION: parallel services keep the same 1 m from a water pipe as crossing services; swept in a sensitivity case"
+  - id: PUB-DRAIN-OFFSET
+    agency: PUB
+    kind: drain_offset
+    value_m: 0.3
+    status: sourced
+    source: C4
+    clause: "cl. 5.5.1"
+    text: "No services within a drain; where there is no drainage reserve, services keep 300 mm from drainage structures"
+  - id: PUB-DRAIN-UNDERCROSS
+    agency: PUB
+    kind: crossing
+    trunk: drain
+    value_m: 1.0
+    must_undercross: true
+    status: sourced
+    source: C4
+    clause: "cl. 5.5.2(a) (lined drain); C5 cl. 11.4.1(a) gives the same 1 m for telecom lead-in pipes"
+    text: "Services undercross a lined drain with 1.0 m clearance below the drain invert"
+  - id: SP-GAS-CLEARANCE
+    agency: SP PowerGrid / PowerGas
+    kind: parallel
+    between: [gas, "*"]
+    value_m: 0.3
+    status: sourced
+    source: C6
+    clause: "C6 cl. 2.6.15; C7 Construction Phase item 4"
+    text: "At least 0.3 m between the external wall of a low-pressure gas pipe and other services"
+  - id: SP-GAS-CROSSING
+    agency: SP PowerGrid / PowerGas
+    kind: crossing
+    trunk: gas
+    value_m: 0.3
+    must_undercross: false
+    status: sourced
+    source: C6
+    clause: "C6 cl. 2.6.15; C7 Construction Phase item 4"
+    text: "The same 0.3 m applied at crossings of a low-pressure gas pipe"
+  - id: IMDA-TELECOM-POWER
+    agency: IMDA
+    kind: parallel
+    between: [telecom, power]
+    value_m: 0.3
+    status: sourced
+    source: C5
+    clause: "cl. 11.3.1(q)(ii)"
+    text: "Telecom pipes separated from power cables by 300 mm of well-tamped earth (or 50 mm concrete surround, not modelled)"
+  - id: DEFAULT-CLEARANCE
+    agency: none
+    kind: parallel
+    between: ["*", "*"]
+    value_m: 0.3
+    status: assumption
+    source: null
+    clause: "no public rule found"
+    text: "ASSUMPTION: 0.3 m working clearance for pairs with no published rule (power-power, power-district cooling, telecom-telecom, telecom-district cooling)"
+  - id: DEFAULT-CROSSING
+    agency: none
+    kind: crossing
+    trunk: "*"
+    value_m: 0.3
+    must_undercross: false
+    status: assumption
+    source: null
+    clause: "no public rule found"
+    text: "ASSUMPTION: 0.3 m vertical clearance at crossings of services with no published crossing rule"
+
+geometry:            # all assumptions: illustrative, not LTA/PUB standard details
+  drain_width_m: 1.0           # external width of the roadside drain at the outer edge of each sidetable
+  drain_invert_depth_m: 1.0    # ground level to drain invert
+  trench_working_width_m: 0.6  # added to the utility width to get the trench width
+  bedding_m: 0.15              # trench depth below the underside of the utility
+
+costs:               # all assumptions: illustrative unit rates, not market data
+  sidetable_rate_per_m3: 150.0     # S$ per cubic metre of trench in the sidetable (excavate, backfill, reinstate)
+  carriageway_rate_per_m3: 400.0   # S$ per cubic metre of trench under the carriageway (adds pavement reinstatement)
+  diversion_factor: 1.5            # diverting a live utility costs this multiple of a new trench
+
+utilities:           # outer dimensions are assumptions unless noted
+  water:      {type: water,   agency: PUB,  label: "Potable water main",        width_m: 0.33, height_m: 0.33, chambers: true}
+  newater:    {type: water,   agency: PUB,  label: "NEWater main",              width_m: 0.22, height_m: 0.22, chambers: true}
+  sewer:      {type: sewer,   agency: PUB,  label: "Sewer",                     width_m: 0.40, height_m: 0.40, chambers: true}
+  gas:        {type: gas,     agency: SP,   label: "Low-pressure gas main",     width_m: 0.16, height_m: 0.16, chambers: true}
+  power_hv:   {type: power,   agency: SP,   label: "Distribution power cables", width_m: 0.60, height_m: 0.30, chambers: false}
+  power_tx:   {type: power,   agency: SP,   label: "Transmission power cables", width_m: 0.90, height_m: 0.40, chambers: false}
+  # telecom: 110 mm nominal pipes per C5 cl. 11.3.1(e),(j); the two-by-two bank is an assumption
+  telecom:    {type: telecom, agency: IMDA, label: "Telecom duct bank A",       width_m: 0.30, height_m: 0.30, chambers: true}
+  telecom_b:  {type: telecom, agency: IMDA, label: "Telecom duct bank B",       width_m: 0.30, height_m: 0.30, chambers: true}
+  dcs:        {type: dcs,     agency: DCS,  label: "District cooling pair",     width_m: 1.32, height_m: 0.56, chambers: true}
+
+reserves:            # widths are scenario assumptions (not checked against LTA standard cross-sections)
+  local:
+    label: "Local access road"
+    reserve_width_m: 15.4
+    carriageway_m: 7.4
+    utilities: [water, sewer, gas, power_hv, telecom]
+  primary:
+    label: "Primary access road"
+    reserve_width_m: 21.4
+    carriageway_m: 13.4
+    utilities: [water, newater, sewer, gas, power_hv, telecom, telecom_b]
+  arterial:
+    label: "Arterial road"
+    reserve_width_m: 26.2
+    carriageway_m: 16.2
+    utilities: [water, newater, sewer, gas, power_hv, power_tx, telecom, telecom_b, dcs]
+  upgrade:           # stress case: the arterial utility set without widening the primary reserve
+    label: "Primary reserve, arterial utility set"
+    reserve_width_m: 21.4
+    carriageway_m: 13.4
+    utilities: [water, newater, sewer, gas, power_hv, power_tx, telecom, telecom_b, dcs]
+
+sensitivity:
+  water_parallel_m: 0.3     # alternative value for the assumed PUB-WATER-PARALLEL clearance
+
+# Brownfield case: an invented as-built corridor in the primary reserve with deliberate conflicts,
+# to which a NEWater main must be added. x_m is the centre offset from the left reserve line.
+brownfield:
+  reserve: primary
+  as_built:
+    - {id: sewer,     x_m: 1.90,  cover_m: 1.6}
+    - {id: gas,       x_m: 2.60,  cover_m: 1.2}
+    - {id: telecom,   x_m: 3.40,  cover_m: 0.8}
+    - {id: power_hv,  x_m: 6.00,  cover_m: 1.0}
+    - {id: water,     x_m: 18.60, cover_m: 1.2}
+    - {id: telecom_b, x_m: 19.20, cover_m: 1.2}
+  new: [newater]

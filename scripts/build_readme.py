@@ -64,6 +64,54 @@ def table(name: str, res: dict) -> str:
         for d in sched["delays"]:
             rows.append(f"| {d['label']} | {d['float_before']:.0f} | {d['m1_slip']:.0f} | {d['m2_slip']:.0f} |")
         return "\n".join(rows)
+    if name.startswith("corridor_"):
+        return corridor_table(name, res["corridor.json"])
+    raise KeyError(name)
+
+
+def corridor_table(name: str, cor: dict) -> str:
+    ex = cor["examples"]
+    if name == "corridor_rules":
+        rows = ["| Rule | Agency | Value (m) | Status |", "|---|---|---|---|"]
+        for r in cor["rules"]["table"]:
+            val = "-" if r["value_m"] is None else f"{r['value_m']:g}"
+            rows.append(f"| `{r['id']}` | {r['agency']} | {val} | {r['status']} |")
+        return "\n".join(rows)
+    if name == "corridor_examples":
+        rows = ["| Case | Utilities | Reserve (m) | Smallest reserve that fits (m) | Spare (m) | Waivers needed | "
+                "Under the carriageway | Trench cost (S$/m) | Premium over all-in-sidetable (S$/m) | "
+                "Lateral undercross depth (m) |", "|---|---|---|---|---|---|---|---|---|---|"]
+        for e in ex.values():
+            g = e["as_given"]
+            under = ", ".join(f"`{u}`" for u in g["under_carriageway"]) or "none"
+            rows.append(f"| {e['label']} | {e['n_utilities']} | {e['reserve_width_m']:.1f} | "
+                        f"{e['min_width']['reserve_width_m']:.2f} | {e['min_width']['spare_reserve_m']:.2f} | "
+                        f"{g['waivers_needed']} | {under} | {g['cost_per_m']:.0f} | {g['premium_per_m']:.0f} | "
+                        f"{e['crossing']['top_depth_m']:.2f} |")
+        return "\n".join(rows)
+    if name == "corridor_binding":
+        rows = ["| Rule switched off | Status | " + " | ".join(e["label"] for e in ex.values()) + " |",
+                "|---|---|" + "---|" * len(ex)]
+        order = [d["rule"] for d in next(iter(ex.values()))["relaxation"]]
+        for rid in order:
+            cells, status = [], ""
+            for e in ex.values():
+                d = next(x for x in e["relaxation"] if x["rule"] == rid)
+                status = d["status"]
+                cells.append(f"{d['saving_m']:.2f}")
+            rows.append(f"| `{rid}` | {status} | " + " | ".join(cells) + " |")
+        return "\n".join(rows)
+    if name == "corridor_audit":
+        rows = ["| Rule broken | Agency | Utilities | Required (m) | As built (m) |", "|---|---|---|---|---|"]
+        for v in cor["brownfield"]["as_built"]["violations"]:
+            who = ", ".join(f"`{u}`" for u in v["items"])
+            rows.append(f"| `{v['rule']}` | {v['agency']} | {who} | {v['required_m']:.2f} | {v['actual_m']:.2f} |")
+        return "\n".join(rows)
+    if name == "corridor_diversion":
+        rows = ["| Utility | Divert within the sidetable (S$/m) | Divert under the carriageway (S$/m) |", "|---|---|---|"]
+        for d in cor["brownfield"]["diversion_unit_costs"]:
+            rows.append(f"| `{d['id']}` | {d['sidetable_per_m']:.0f} | {d['carriageway_per_m']:.0f} |")
+        return "\n".join(rows)
     raise KeyError(name)
 
 

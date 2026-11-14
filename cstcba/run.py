@@ -4,7 +4,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from . import costmodel, discount, interfaces, schedule, sensitivity
+from . import corridor, corridor_run, costmodel, discount, interfaces, schedule, sensitivity
 
 ROOT = Path(__file__).resolve().parent.parent
 RESULTS = ROOT / "results"
@@ -91,6 +91,14 @@ def main() -> None:
     for name, data in files.items():
         (RESULTS / name).write_text(json.dumps(_round(data), indent=2) + "\n", encoding="utf-8", newline=LF)
     (RESULTS / "interfaces.md").write_text(interfaces.markdown(icfg), encoding="utf-8", newline=LF)
+    ccfg = corridor.load()
+    cres = _round(corridor_run.results(ccfg))
+    (RESULTS / "corridor.json").write_text(json.dumps(cres, indent=2) + LF, encoding="utf-8", newline=LF)
+    (ROOT / "docs" / "corridor_rules.md").write_text(corridor_run.rules_markdown(ccfg), encoding="utf-8", newline=LF)
+    img = ROOT / "docs" / "img"
+    img.mkdir(exist_ok=True)
+    for name, text in corridor_run.drawings(ccfg, cres).items():
+        (img / name).write_text(text, encoding="utf-8", newline=LF)
 
 
 if __name__ == "__main__":
